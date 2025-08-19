@@ -1,13 +1,15 @@
 // import React, { useState } from "react";
 // import { Link } from "react-router-dom";
-// import {
-//   IoHomeOutline,
-//   IoNewspaperOutline,
-//   IoFileTrayStackedOutline,
-// } from "react-icons/io5";
+// import { IoHomeOutline, IoNewspaperOutline } from "react-icons/io5";
+
 // import { FaGun } from "react-icons/fa6";
 // import { FaRegMoneyBillAlt } from "react-icons/fa";
-// import { IoIosContact, IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+// import {
+//   IoIosContact,
+//   IoIosArrowDown,
+//   IoIosArrowUp,
+//   IoIosFolder,
+// } from "react-icons/io";
 // import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
 
 // import "./NavMenu.css";
@@ -22,38 +24,26 @@
 //   };
 
 //   const toggleCollapse = () => {
-//     setIconRotation((prevRotation) => prevRotation + 360);
+//     setIconRotation((prev) => prev + 360);
 //     setCollapsed((prev) => {
-//       // Zawsze zamykamy otwarte submenu przy zwijaniu/rozwijaniu
 //       setActiveMenu(null);
-//       // Zmieniamy stan zwinięcia
 //       return !prev;
 //     });
 //   };
 
 //   const renderMenuItem = (icon, title, path, submenuKey, submenuItems) => {
-//     // --- KLUCZOWA ZMIANA TUTAJ ---
-//     // Tworzymy klon ikony, dodając JEDNOCZEŚNIE klasę i styl.
-//     // To gwarantuje, że każda obracana ikona ma klasę `.nav-icon` z animacją.
+//     // Obracamy każdą ikonę niezależnie od tego czy ma submenu
 //     const rotatedIcon = React.cloneElement(icon, {
 //       className: "nav-icon",
-//       style: { transform: `rotate(${iconRotation}deg)` },
+//       style: {
+//         transform: `rotate(${iconRotation}deg)`,
+//         transition: "transform 0.3s",
+//       },
 //     });
-
-//     if (collapsed) {
-//       return (
-//         <li className="nav-main_menu">
-//           <div className="nav-link" onClick={toggleCollapse}>
-//             {rotatedIcon}
-//           </div>
-//         </li>
-//       );
-//     }
 
 //     return (
 //       <li className="nav-main_menu">
 //         {submenuKey ? (
-//           // Element z submenu
 //           <div className="nav-link" onClick={() => toggleMenu(submenuKey)}>
 //             {rotatedIcon}
 //             <span className="nav-title">{title}</span>
@@ -66,18 +56,17 @@
 //             </span>
 //           </div>
 //         ) : (
-//           // Zwykły link
 //           <Link
 //             to={path || "/"}
 //             className="nav-link"
-//             onClick={() => setActiveMenu(null)}
+//             onClick={() => setActiveMenu(null)} // <-- tu dodajemy
 //           >
 //             {rotatedIcon}
 //             <span className="nav-title">{title}</span>
 //           </Link>
 //         )}
 
-//         {submenuKey && (
+//         {submenuKey && !collapsed && (
 //           <ul
 //             className={`nav-submenu ${activeMenu === submenuKey ? "open" : ""}`}
 //           >
@@ -105,16 +94,15 @@
 //               transform: `rotate(${
 //                 collapsed ? iconRotation : iconRotation + 180
 //               }deg)`,
+//               transition: "transform 0.3s",
 //             }}
 //           />
 //         </section>
 //       </li>
 
-//       {/* --- KLUCZOWA ZMIANA TUTAJ --- */}
-//       {/* Przekazujemy "czyste" ikony, bez className. Klasa zostanie dodana w renderMenuItem */}
 //       {renderMenuItem(<IoHomeOutline />, "Home", "/")}
 //       {renderMenuItem(<IoNewspaperOutline />, "Aktualności", "/")}
-//       {renderMenuItem(<IoFileTrayStackedOutline />, "Oferta", "/", "oferta", [
+//       {renderMenuItem(<IoIosFolder />, "Oferta", "/", "oferta", [
 //         { label: "Pełna oferta" },
 //         { label: "Paintball dla dorosłych" },
 //         { label: "Wycieczki szkolne" },
@@ -130,7 +118,6 @@
 // };
 
 // export default NavMenu;
-
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { IoHomeOutline, IoNewspaperOutline } from "react-icons/io5";
@@ -159,10 +146,29 @@ const NavMenu = () => {
   const toggleCollapse = () => {
     setIconRotation((prev) => prev + 360);
     setCollapsed((prev) => {
+      // Zawsze zamykaj podmenu podczas zwijania/rozwijania głównego menu
       setActiveMenu(null);
       return !prev;
     });
   };
+
+  // <-- POCZĄTEK ZMIAN: Nowa funkcja obsługująca kliknięcia
+  const handleMenuItemClick = (submenuKey) => {
+    // Jeśli menu jest zwinięte, rozwiń je i nie rób nic więcej
+    if (collapsed) {
+      toggleCollapse();
+    } else {
+      // Jeśli menu jest rozwinięte, wykonaj standardową akcję
+      if (submenuKey) {
+        // Jeśli element ma podmenu, przełącz jego widoczność
+        toggleMenu(submenuKey);
+      } else {
+        // Jeśli to zwykły link, zamknij aktywne podmenu (jeśli jakieś jest)
+        setActiveMenu(null);
+      }
+    }
+  };
+  // <-- KONIEC ZMIAN
 
   const renderMenuItem = (icon, title, path, submenuKey, submenuItems) => {
     // Obracamy każdą ikonę niezależnie od tego czy ma submenu
@@ -177,7 +183,11 @@ const NavMenu = () => {
     return (
       <li className="nav-main_menu">
         {submenuKey ? (
-          <div className="nav-link" onClick={() => toggleMenu(submenuKey)}>
+          // <-- ZMIANA: Używamy nowej funkcji handleMenuItemClick
+          <div
+            className="nav-link"
+            onClick={() => handleMenuItemClick(submenuKey)}
+          >
             {rotatedIcon}
             <span className="nav-title">{title}</span>
             <span className="nav-arrow">
@@ -192,7 +202,9 @@ const NavMenu = () => {
           <Link
             to={path || "/"}
             className="nav-link"
-            onClick={() => setActiveMenu(null)} // <-- tu dodajemy
+            // <-- ZMIANA: Używamy nowej funkcji handleMenuItemClick
+            // Link zajmie się nawigacją, a my logiką menu
+            onClick={() => handleMenuItemClick()}
           >
             {rotatedIcon}
             <span className="nav-title">{title}</span>
@@ -236,16 +248,16 @@ const NavMenu = () => {
       {renderMenuItem(<IoHomeOutline />, "Home", "/")}
       {renderMenuItem(<IoNewspaperOutline />, "Aktualności", "/")}
       {renderMenuItem(<IoIosFolder />, "Oferta", "/", "oferta", [
-        { label: "Pełna oferta" },
-        { label: "Paintball dla dorosłych" },
-        { label: "Wycieczki szkolne" },
+        { label: "Pełna oferta", path: "/oferta" },
+        { label: "Paintball dla dorosłych", path: "/oferta/paintball" },
+        { label: "Wycieczki szkolne", path: "/oferta/wycieczki" },
       ])}
-      {renderMenuItem(<FaGun />, "Nasz Poligon", "/")}
+      {renderMenuItem(<FaGun />, "Nasz Poligon", "/poligon")}
       {renderMenuItem(<FaRegMoneyBillAlt />, "Cennik", "/", "cennik", [
-        { label: "Plan podstawowy" },
-        { label: "Plan premium" },
+        { label: "Plan podstawowy", path: "/cennik/podstawowy" },
+        { label: "Plan premium", path: "/cennik/premium" },
       ])}
-      {renderMenuItem(<IoIosContact />, "Kontakt", "/")}
+      {renderMenuItem(<IoIosContact />, "Kontakt", "/kontakt")}
     </ul>
   );
 };
