@@ -1,0 +1,130 @@
+.navmenu__container {
+  flex-grow: 1;
+  height: 100vh;
+  font-size: 1.2rem;
+  color: white;
+  list-style: none;
+  background-color: black;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  transition: width 0.3s ease;
+  border-right: 1px solid var(--line-clr);
+}
+
+.navmenu__container.collapsed {
+  width: 70px;
+}
+
+.navmenu__container .nav-main_menu {
+  width: 100%;
+  margin: 2px 0;
+}
+
+.nav-link {
+  width: 100%;
+  height: 50px;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.navmenu__container .nav-main_menu > .nav-link:hover {
+  background-color: var(--hover-clr);
+  border-radius: 0.5em;
+  color: var(--active-clr);
+}
+.navmenu__container .nav-main_menu > .nav-link:active {
+  color: var(--secondary-text-clr);
+}
+
+.nav-link .nav-title {
+  flex-grow: 1;
+  margin-left: 15px;
+  white-space: nowrap;
+}
+
+.navmenu__container.collapsed .nav-title,
+.navmenu__container.collapsed .nav-arrow {
+  display: none;
+}
+
+.nav-icon {
+  font-size: 1.5rem;
+  min-width: 70px;
+  text-align: center;
+  transition: transform 0.5s ease-in-out;
+}
+
+.navmenu__container .nav-main_menu > .nav-link:hover .nav-icon {
+  color: rgb(248, 69, 69);
+}
+
+.nav-arrow {
+  margin-right: 20px;
+}
+
+.nav-submenu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease-in-out;
+}
+
+.nav-submenu.open {
+  max-height: 500px;
+}
+
+.nav-submenu .nav-sublink {
+  color: white;
+  text-decoration: none;
+  display: block;
+  padding: 12px 15px 12px 70px;
+}
+
+.nav-submenu .nav-sublink:hover {
+  background-color: var(--hover-clr);
+  border-radius: 10px;
+  color: var(--active-clr);
+}
+
+.nav-submenu .nav-sublink:active {
+  color: var(--secondary-text-clr);
+}
+
+.nav-logo {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.nav-logo .nav-icon {
+  padding: 5px 10px;
+  min-width: 40px;
+}
+
+.nav-logo .nav-icon:hover {
+  background-color: var(--hover-clr);
+  border-radius: 0.3em;
+}
+
+.nav-title.nav-title-www {
+  padding-left: 15px;
+  transition: opacity 0.3s ease, width 0.3s ease;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.navmenu__container.collapsed .nav-title.nav-title-www {
+  opacity: 0;
+  width: 0;
+}
