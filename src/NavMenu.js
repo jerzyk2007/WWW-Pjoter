@@ -237,7 +237,7 @@ const NavMenu = () => {
             className="nav-icon"
             style={{
               transform: `rotate(${
-                collapsed ? iconRotation : iconRotation + 180
+                collapsed ? iconRotation + 180 : iconRotation
               }deg)`,
               transition: "transform 0.3s",
             }}
