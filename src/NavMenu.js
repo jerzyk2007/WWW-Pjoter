@@ -176,7 +176,7 @@ const NavMenu = () => {
       className: "nav-icon",
       style: {
         transform: `rotate(${iconRotation}deg)`,
-        transition: "transform 0.3s",
+        transition: "transform 0.8s",
       },
     });
 
