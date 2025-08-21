@@ -1,5 +1,3 @@
-/* src/components/PaintballMenu/Nav.css */
-
 @import url("https://fonts.googleapis.com/css2?family=Staatliches&family=Roboto:wght@400;700&display=swap");
 
 :root {
@@ -9,7 +7,6 @@
   --border-color: #333;
 }
 
-/* --- Główna nawigacja --- */
 .navbar {
   background-color: var(--primary-bg);
   color: var(--text-color);
@@ -31,7 +28,6 @@
   gap: 2rem;
 }
 
-/* --- Logo --- */
 .brand-title {
   font-family: "Staatliches", cursive;
   font-size: 2.5rem;
@@ -47,7 +43,6 @@
   text-shadow: 0 0 10px var(--brand-color), 0 0 20px rgba(144, 238, 144, 0.7);
 }
 
-/* --- Główne linki (kontener) --- */
 .nav-links {
   list-style: none;
   display: flex;
@@ -81,7 +76,6 @@
   text-align: center;
 }
 
-/* --- Efekt plamy --- */
 .nav-item::before,
 .submenu li::before {
   content: "";
@@ -102,7 +96,6 @@
   z-index: 1;
 }
 
-/* --- Zmiana koloru tekstu (TYLKO DESKTOP) --- */
 .nav-item:hover > a,
 .nav-item:hover > .submenu-toggle,
 .nav-item a.active,
@@ -111,7 +104,6 @@
   color: var(--hover-text-color);
 }
 
-/* --- Aktywacja animacji plamy --- */
 .nav-item:hover::before,
 .submenu li:hover::before {
   opacity: 1;
@@ -123,7 +115,6 @@
   transform: translate(-50%, -50%) scale(1.1);
 }
 
-/* --- Submenu (Desktop) --- */
 .submenu-toggle {
   background: none;
   border: none;
@@ -174,7 +165,6 @@
   padding: 0.75rem 1.5rem;
 }
 
-/* --- Hamburger & Responsywność --- */
 .hamburger {
   display: none;
   background: none;
@@ -237,28 +227,22 @@
     transform: translateY(0);
   }
 
-  /* Rozciągamy każdy element menu na pełną szerokość, co jest kluczowe */
   .nav-item {
     width: 100%;
     text-align: center;
   }
 
-  /* Ujednolicenie czcionki na mobile */
   .nav-item a,
   .submenu-toggle,
   .submenu li a {
     font-size: 1.5rem;
   }
 
-  /* === KLUCZOWA POPRAWKA === */
-  /* Resetujemy styl flexbox dla przycisku w widoku mobilnym */
   .submenu-toggle {
-    display: inline-block; /* Zamiast 'flex' */
-    justify-content: initial; /* Reset */
+    display: inline-block;
+    justify-content: initial;
   }
-  /* ========================= */
 
-  /* Nadpisanie kolorów linków w menu mobilnym */
   .nav-links.open a,
   .nav-links.open .submenu-toggle {
     color: var(--text-color) !important;
@@ -270,7 +254,6 @@
     color: var(--brand-color) !important;
   }
 
-  /* Wyłączenie hover na submenu na dotykowych */
   .nav-item:hover .submenu {
     opacity: 0;
     pointer-events: none;
