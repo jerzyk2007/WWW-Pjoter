@@ -26,7 +26,6 @@ body {
 /* } */
 
 .app {
-  /* flex-grow: 1; */
   width: 100vw;
   display: flex;
   flex-direction: row;
@@ -34,4 +33,5 @@ body {
 
 .header {
   flex-grow: 1;
+  display: flex;
 }
