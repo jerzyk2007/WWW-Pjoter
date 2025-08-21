@@ -1,4 +1,4 @@
-.navmenu__container {
+/* .navmenu__container {
   flex-grow: 1;
   height: 100vh;
   font-size: 1.2rem;
@@ -127,4 +127,229 @@
 .navmenu__container.collapsed .nav-title.nav-title-www {
   opacity: 0;
   width: 0;
+} */
+
+/* --- Style podstawowe (desktop) --- */
+.navmenu__container {
+  height: 100vh;
+  font-size: 1.2rem;
+  color: white;
+  list-style: none;
+  background-color: black;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  transition: width 0.3s ease;
+  border-right: 1px solid var(--line-clr);
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+}
+
+.navmenu__container.collapsed {
+  width: 70px;
+}
+
+.navmenu__container .nav-main_menu {
+  width: 100%;
+  margin: 2px 0;
+}
+
+.nav-link {
+  width: 100%;
+  height: 50px;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.navmenu__container .nav-main_menu > .nav-link:hover {
+  background-color: var(--hover-clr);
+  border-radius: 0.5em;
+  color: var(--active-clr);
+}
+.navmenu__container .nav-main_menu > .nav-link:active {
+  color: var(--secondary-text-clr);
+}
+
+.nav-link .nav-title {
+  flex-grow: 1;
+  margin-left: 15px;
+  white-space: nowrap;
+}
+
+.navmenu__container.collapsed .nav-title,
+.navmenu__container.collapsed .nav-arrow {
+  display: none;
+}
+
+.nav-icon {
+  font-size: 1.5rem;
+  min-width: 70px;
+  text-align: center;
+  transition: transform 0.5s ease-in-out;
+}
+
+.navmenu__container .nav-main_menu > .nav-link:hover .nav-icon {
+  color: rgb(248, 69, 69);
+}
+
+.nav-arrow {
+  margin-right: 20px;
+}
+
+.nav-submenu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease-in-out;
+}
+
+.nav-submenu.open {
+  max-height: 500px;
+}
+
+.nav-submenu .nav-sublink {
+  color: white;
+  text-decoration: none;
+  display: block;
+  padding: 12px 15px 12px 70px;
+}
+
+.nav-submenu .nav-sublink:hover {
+  background-color: var(--hover-clr);
+  border-radius: 10px;
+  color: var(--active-clr);
+}
+
+.nav-submenu .nav-sublink:active {
+  color: var(--secondary-text-clr);
+}
+
+.nav-logo {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.nav-logo .nav-icon {
+  padding: 5px 10px;
+  min-width: 40px;
+}
+
+.nav-logo .nav-icon:hover {
+  background-color: var(--hover-clr);
+  border-radius: 0.3em;
+}
+
+.nav-title.nav-title-www {
+  padding-left: 15px;
+  transition: opacity 0.3s ease, width 0.3s ease;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.navmenu__container.collapsed .nav-title.nav-title-www {
+  opacity: 0;
+  width: 0;
+}
+
+/* --- Style dla hamburgera i nakładki (wspólne) --- */
+.hamburger-icon {
+  display: none;
+  position: fixed;
+  top: 15px;
+  right: 20px;
+  z-index: 1002;
+  background: none;
+  border: none;
+  color: black; /* Zmień kolor ikony, aby pasował do tła strony */
+  font-size: 2.2rem;
+  cursor: pointer;
+}
+
+.nav-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 999;
+}
+
+/* --- SEKCJA RESPONSIVE DLA KOMÓREK --- */
+@media (max-width: 768px) {
+  /* Pokaż ikonę hamburgera */
+  .hamburger-icon {
+    display: block;
+    position: fixed;
+    top: 15px;
+    right: 20px;
+    z-index: 1002;
+    background: none;
+    border: none;
+    /* color: black; Pamiętaj, aby kolor pasował do tła Twojej strony */
+    font-size: 2.2rem;
+    cursor: pointer;
+    color: aliceblue;
+    /* --- KLUCZOWE ZMIANY --- */
+    /* 1. Definiujemy, że właściwość 'transform' ma być animowana */
+    transition: transform 0.5s ease, color 0.5s ease; /* płynny obrót i zmiana koloru */
+    transform-origin: center center; /* obrót wokół środka */
+  }
+
+  /* 2. Dodajemy styl dla stanu aktywnego (gdy menu jest otwarte) */
+  .hamburger-icon.active {
+    /* Obróć ikonę o 360 stopni */
+    transform: rotate(360deg);
+    /* Przykładowa zmiana koloru w stanie aktywnym */
+  }
+
+  /* Pokaż nakładkę, gdy menu jest otwarte */
+  .navmenu__container.mobile-open ~ .nav-overlay {
+    display: block;
+  }
+
+  /* Zmień pozycjonowanie i wygląd menu na mobilce */
+  .navmenu__container {
+    /* KLUCZOWE ZMIANY */
+    width: 100%; /* Menu zajmuje całą szerokość */
+    left: auto; /* Anuluj pozycjonowanie z lewej */
+    right: -100%; /* Ukryj menu całkowicie za prawą krawędzią */
+    transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Płynna animacja */
+    z-index: 1001;
+    border-right: none;
+  }
+
+  /* Styl dla otwartego menu mobilnego */
+  .navmenu__container.mobile-open {
+    right: 0; /* Wsuń menu na ekran */
+  }
+
+  /* Nadpisz style 'collapsed', które nie mają sensu na mobilce */
+  .navmenu__container.collapsed {
+    width: 100%; /* Zawsze pełna szerokość, nawet jeśli stan `collapsed` jest aktywny */
+  }
+
+  .navmenu__container.collapsed .nav-title,
+  .navmenu__container.collapsed .nav-arrow {
+    display: block; /* Zawsze pokazuj tekst i strzałki w menu */
+  }
+
+  /* Ukryj strzałkę do zwijania menu z wersji desktopowej */
+  .nav-logo > .nav-icon {
+    display: none;
+  }
 }
