@@ -4,29 +4,53 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./Nav.css";
 
+// const menuItems = [
+//   { name: "Strona Główna", path: "/", splatColor: "#ff6347" },
+//   {
+//     name: "Nasze Pola",
+//     splatColor: "#32cd32",
+//     submenu: [
+//       { name: "Arena Leśna", path: "/pola/arena-lesna" },
+//       { name: "Speedball", path: "/pola/speedball" },
+//       { name: "Forteca", path: "/pola/forteca" },
+//     ],
+//   },
+//   { name: "Cennik", path: "/cennik", splatColor: "#1e90ff" },
+//   { name: "Galeria", path: "/galeria", splatColor: "#ffeb3b" },
+//   {
+//     name: "Rezerwacja",
+//     splatColor: "#ff4500",
+//     submenu: [
+//       { name: "Rezerwacja Online", path: "/rezerwacja/online" },
+//       { name: "Voucher Podarunkowy", path: "/rezerwacja/voucher" },
+//       { name: "Organizacja Imprez", path: "/rezerwacja/imprezy" },
+//     ],
+//   },
+//   { name: "Kontakt", path: "/kontakt", splatColor: "#9400d3" },
+// ];
 const menuItems = [
-  { name: "Strona Główna", path: "/", splatColor: "#ff6347" },
+  { name: "Strona Główna", path: "#", splatColor: "#ff6347" },
   {
     name: "Nasze Pola",
     splatColor: "#32cd32",
     submenu: [
-      { name: "Arena Leśna", path: "/pola/arena-lesna" },
-      { name: "Speedball", path: "/pola/speedball" },
-      { name: "Forteca", path: "/pola/forteca" },
+      { name: "Arena Leśna", path: "#" },
+      { name: "Speedball", path: "#" },
+      { name: "Forteca", path: "#" },
     ],
   },
-  { name: "Cennik", path: "/cennik", splatColor: "#1e90ff" },
-  { name: "Galeria", path: "/galeria", splatColor: "#ffeb3b" },
+  { name: "Cennik", path: "#", splatColor: "#1e90ff" },
+  { name: "Galeria", path: "#", splatColor: "#ffeb3b" },
   {
     name: "Rezerwacja",
     splatColor: "#ff4500",
     submenu: [
-      { name: "Rezerwacja Online", path: "/rezerwacja/online" },
-      { name: "Voucher Podarunkowy", path: "/rezerwacja/voucher" },
-      { name: "Organizacja Imprez", path: "/rezerwacja/imprezy" },
+      { name: "Rezerwacja Online", path: "#" },
+      { name: "Voucher Podarunkowy", path: "#" },
+      { name: "Organizacja Imprez", path: "#" },
     ],
   },
-  { name: "Kontakt", path: "/kontakt", splatColor: "#9400d3" },
+  { name: "Kontakt", path: "#", splatColor: "#9400d3" },
 ];
 
 const getContrastColor = (hexColor) => {
