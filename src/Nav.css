@@ -98,19 +98,12 @@
 
 .nav-item:hover > a,
 .nav-item:hover > .submenu-toggle,
-.nav-item a.active,
-.submenu li:hover a,
-.submenu li a.active {
+.submenu li:hover a {
   color: var(--hover-text-color);
 }
 
 .nav-item:hover::before,
 .submenu li:hover::before {
-  opacity: 1;
-  transform: translate(-50%, -50%) scale(1.1);
-}
-.nav-links.user-interacted .nav-item:has(a.active)::before,
-.nav-links.user-interacted .submenu li:has(a.active)::before {
   opacity: 1;
   transform: translate(-50%, -50%) scale(1.1);
 }
@@ -155,7 +148,13 @@
   min-width: 200px;
 }
 
-.nav-item:hover .submenu {
+/* .nav-item:hover .submenu {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+} */
+
+.submenu.desktop-open {
   opacity: 1;
   transform: translateX(-50%) translateY(0);
   pointer-events: auto;
@@ -243,13 +242,13 @@
     justify-content: initial;
   }
 
+  /* ZMIANA 4: Uproszczenie reguł kolorów na mobile */
   .nav-links.open a,
   .nav-links.open .submenu-toggle {
     color: var(--text-color) !important;
   }
 
-  .nav-links.open .nav-item a.active,
-  .nav-links.open .submenu li a.active,
+  .nav-links.open .nav-item a:hover,
   .nav-links.open .submenu li a:hover {
     color: var(--brand-color) !important;
   }

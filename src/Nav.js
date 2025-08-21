@@ -1,3 +1,5 @@
+// src/components/PaintballMenu/Nav.js
+
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./Nav.css";
@@ -39,8 +41,10 @@ const getContrastColor = (hexColor) => {
 
 const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [openSubmenu, setOpenSubmenu] = useState(null);
+  const [openSubmenu, setOpenSubmenu] = useState(null); // Dla mobile
   const [hasInteracted, setHasInteracted] = useState(false);
+  // ZMIANA 1: Nowy, dedykowany stan do kontroli hover na desktopie
+  const [desktopSubmenuOpen, setDesktopSubmenuOpen] = useState(null);
 
   const handleSubmenuToggle = (itemName) => {
     setOpenSubmenu(openSubmenu === itemName ? null : itemName);
@@ -52,6 +56,8 @@ const Nav = () => {
     }
     setIsMenuOpen(false);
     setOpenSubmenu(null);
+    // ZMIANA 2: Resetujemy stan submenu desktopowego po kliknięciu
+    setDesktopSubmenuOpen(null);
   };
 
   return (
@@ -63,7 +69,12 @@ const Nav = () => {
 
         <button
           className={`hamburger ${isMenuOpen ? "open" : ""}`}
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          onClick={() => {
+            if (isMenuOpen) {
+              setOpenSubmenu(null);
+            }
+            setIsMenuOpen(!isMenuOpen);
+          }}
           aria-label="Toggle menu"
         >
           <span className="bar"></span>
@@ -71,11 +82,7 @@ const Nav = () => {
           <span className="bar"></span>
         </button>
 
-        <ul
-          className={`nav-links ${isMenuOpen ? "open" : ""} ${
-            hasInteracted ? "user-interacted" : ""
-          }`}
-        >
+        <ul className={`nav-links ${isMenuOpen ? "open" : ""}`}>
           {menuItems.map((item) => {
             const contrastColor = getContrastColor(item.splatColor);
             return (
@@ -84,6 +91,9 @@ const Nav = () => {
                 className={`nav-item ${
                   item.submenu ? "nav-item--has-submenu" : ""
                 }`}
+                // ZMIANA 3: Dodajemy obsługę zdarzeń myszy
+                onMouseEnter={() => setDesktopSubmenuOpen(item.name)}
+                onMouseLeave={() => setDesktopSubmenuOpen(null)}
                 style={{
                   "--splat-color": item.splatColor,
                   "--hover-text-color": contrastColor,
@@ -98,9 +108,12 @@ const Nav = () => {
                       {item.name}
                     </button>
                     <ul
-                      className={`submenu ${
-                        openSubmenu === item.name ? "open" : ""
-                      }`}
+                      // ZMIANA 4: Klasa open jest teraz kontrolowana przez DWA stany
+                      className={`submenu 
+                        ${openSubmenu === item.name ? "open" : ""} 
+                        ${
+                          desktopSubmenuOpen === item.name ? "desktop-open" : ""
+                        }`}
                     >
                       {item.submenu.map((subItem) => (
                         <li key={subItem.name}>
