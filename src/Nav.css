@@ -13,7 +13,7 @@
 .navbar {
   background-color: var(--primary-bg);
   color: var(--text-color);
-  padding: 0.5rem 2rem;
+  padding: 0.1rem 2rem;
   position: sticky;
   top: 0;
   width: 100%;
@@ -231,11 +231,16 @@
     gap: 2rem;
     transform: translateY(-100%);
     transition: transform 0.4s ease-in-out;
-    text-align: center;
   }
 
   .nav-links.open {
     transform: translateY(0);
+  }
+
+  /* Rozciągamy każdy element menu na pełną szerokość, co jest kluczowe */
+  .nav-item {
+    width: 100%;
+    text-align: center;
   }
 
   /* Ujednolicenie czcionki na mobile */
@@ -246,24 +251,30 @@
   }
 
   /* === KLUCZOWA POPRAWKA === */
-  /* Nadpisujemy WSZYSTKIE kolory linków w menu mobilnym, aby były zawsze widoczne */
+  /* Resetujemy styl flexbox dla przycisku w widoku mobilnym */
+  .submenu-toggle {
+    display: inline-block; /* Zamiast 'flex' */
+    justify-content: initial; /* Reset */
+  }
+  /* ========================= */
+
+  /* Nadpisanie kolorów linków w menu mobilnym */
   .nav-links.open a,
   .nav-links.open .submenu-toggle {
-    /* Domyślny kolor tekstu w menu mobilnym */
     color: var(--text-color) !important;
   }
 
   .nav-links.open .nav-item a.active,
   .nav-links.open .submenu li a.active,
   .nav-links.open .submenu li a:hover {
-    /* Kolor tekstu dla aktywnych/najechanych linków w menu mobilnym */
     color: var(--brand-color) !important;
   }
-  /* ========================= */
 
+  /* Wyłączenie hover na submenu na dotykowych */
   .nav-item:hover .submenu {
     opacity: 0;
     pointer-events: none;
+    transform: translateX(0%) translateY(0);
   }
 
   .submenu {
@@ -274,13 +285,13 @@
     border: none;
     border-radius: 0;
     min-width: auto;
-    /* padding: 0.5rem 0 0.5rem 1.5rem; */
-    /* margin-top: -1rem; */
-    display: none;
     width: 100%;
     text-align: center;
-    opacity: 1 !important; /* ✅ nadpisanie */
-    pointer-events: auto !important; /* ✅ nadpisanie */
+    display: none;
+    padding: 0.5rem 0;
+    margin-top: 0;
+    opacity: 1 !important;
+    pointer-events: auto !important;
   }
 
   .submenu.open {

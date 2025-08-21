@@ -1,5 +1,3 @@
-// src/components/PaintballMenu/Nav.js
-
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./Nav.css";
@@ -64,7 +62,6 @@ const Nav = () => {
         </NavLink>
 
         <button
-          // KLUCZOWA ZMIANA: Dodajemy klasę 'open' gdy menu jest otwarte
           className={`hamburger ${isMenuOpen ? "open" : ""}`}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Toggle menu"
