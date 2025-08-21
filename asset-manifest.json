@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/WWW-Pjoter/static/css/main.08f2cd0e.css",
+    "main.css": "/WWW-Pjoter/static/css/main.c945b8b9.css",
     "main.js": "/WWW-Pjoter/static/js/main.85928ba1.js",
     "index.html": "/WWW-Pjoter/index.html",
     "static/media/splat.svg": "/WWW-Pjoter/static/media/splat.d7cf7214d97ffbb4da92.svg",
-    "main.08f2cd0e.css.map": "/WWW-Pjoter/static/css/main.08f2cd0e.css.map",
+    "main.c945b8b9.css.map": "/WWW-Pjoter/static/css/main.c945b8b9.css.map",
     "main.85928ba1.js.map": "/WWW-Pjoter/static/js/main.85928ba1.js.map"
   },
   "entrypoints": [
-    "static/css/main.08f2cd0e.css",
+    "static/css/main.c945b8b9.css",
     "static/js/main.85928ba1.js"
   ]
 }
