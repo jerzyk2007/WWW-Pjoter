@@ -248,6 +248,10 @@
     color: var(--text-color) !important;
   }
 
+  .nav-links.open .submenu li a {
+    color: rgb(57, 136, 175) !important; /* czerwony tylko dla submenu */
+  }
+
   .nav-links.open .nav-item a:hover,
   .nav-links.open .submenu li a:hover {
     color: var(--brand-color) !important;
