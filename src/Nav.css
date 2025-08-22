@@ -200,6 +200,9 @@
   .nav-links {
     gap: 1rem;
   }
+  .navbar-container {
+    margin: 0 auto;
+  }
 }
 
 @media (max-width: 768px) {
