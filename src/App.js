@@ -1,7 +1,6 @@
 import NavMenu from "./NavMenu";
 import Main from "./Main";
 import Nav from "./Nav";
-
 import "./App.css";
 
 function App() {

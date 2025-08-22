@@ -3,6 +3,7 @@
 :root {
   --primary-bg: #1a1a1a;
   --text-color: #f0f0f0;
+  --hover-text: #952525;
   --brand-color: #90ee90;
   --border-color: #333;
 }
@@ -76,7 +77,7 @@
   text-align: center;
 }
 
-.nav-item::before,
+/* .nav-item::before,
 .submenu li::before {
   content: "";
   position: absolute;
@@ -94,19 +95,19 @@
   transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
     opacity 0.3s ease;
   z-index: 1;
-}
+} */
 
 .nav-item:hover > a,
 .nav-item:hover > .submenu-toggle,
 .submenu li:hover a {
-  color: var(--hover-text-color);
+  color: var(--hover-text);
 }
 
-.nav-item:hover::before,
+/* .nav-item:hover::before,
 .submenu li:hover::before {
   opacity: 1;
   transform: translate(-50%, -50%) scale(1.1);
-}
+} */
 
 .submenu-toggle {
   background: none;

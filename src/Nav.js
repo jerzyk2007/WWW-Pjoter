@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import TargetCursor from "./TargetCursor";
+import useMediaQuery from "./hooks/useMediaQuery";
 import "./Nav.css";
 
 // const menuItems = [
@@ -71,6 +73,8 @@ const Nav = () => {
   // ZMIANA 1: Nowy, dedykowany stan do kontroli hover na desktopie
   const [desktopSubmenuOpen, setDesktopSubmenuOpen] = useState(null);
 
+  const isDesktop = useMediaQuery("(min-width: 769px)");
+
   const handleSubmenuToggle = (itemName) => {
     setOpenSubmenu(openSubmenu === itemName ? null : itemName);
   };
@@ -88,7 +92,19 @@ const Nav = () => {
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        <NavLink to="/" className="brand-title" onClick={handleLinkClick}>
+        {/* <TargetCursor spinDuration={2} hideDefaultCursor={true} /> */}
+        {isDesktop && (
+          <TargetCursor spinDuration={2} hideDefaultCursor={true} />
+        )}
+        {/* <NavLink to="/" className="brand-title" onClick={handleLinkClick}>
+          PAINTBALL
+        </NavLink> */}
+
+        <NavLink
+          to="/"
+          className="brand-title cursor-target"
+          onClick={handleLinkClick}
+        >
           PAINTBALL
         </NavLink>
 
@@ -116,7 +132,6 @@ const Nav = () => {
                 className={`nav-item ${
                   item.submenu ? "nav-item--has-submenu" : ""
                 }`}
-                // ZMIANA 3: Dodajemy obsługę zdarzeń myszy
                 onMouseEnter={() => setDesktopSubmenuOpen(item.name)}
                 onMouseLeave={() => setDesktopSubmenuOpen(null)}
                 style={{
@@ -127,22 +142,27 @@ const Nav = () => {
                 {item.submenu ? (
                   <>
                     <button
-                      className="submenu-toggle"
+                      // <<< POPRAWKA: Łączymy obie klasy spacją
+                      className="submenu-toggle cursor-target"
                       onClick={() => handleSubmenuToggle(item.name)}
                     >
                       {item.name}
                     </button>
                     <ul
-                      // ZMIANA 4: Klasa open jest teraz kontrolowana przez DWA stany
-                      className={`submenu 
-                        ${openSubmenu === item.name ? "open" : ""} 
-                        ${
-                          desktopSubmenuOpen === item.name ? "desktop-open" : ""
-                        }`}
+                      className={`submenu ${
+                        openSubmenu === item.name ? "open" : ""
+                      } ${
+                        desktopSubmenuOpen === item.name ? "desktop-open" : ""
+                      }`}
                     >
                       {item.submenu.map((subItem) => (
                         <li key={subItem.name}>
-                          <NavLink to={subItem.path} onClick={handleLinkClick}>
+                          <NavLink
+                            to={subItem.path}
+                            onClick={handleLinkClick}
+                            // <<< POPRAWKA: Dodajemy klasę obok potencjalnych innych
+                            className="cursor-target"
+                          >
                             {subItem.name}
                           </NavLink>
                         </li>
@@ -150,7 +170,12 @@ const Nav = () => {
                     </ul>
                   </>
                 ) : (
-                  <NavLink to={item.path} onClick={handleLinkClick}>
+                  <NavLink
+                    to={item.path}
+                    onClick={handleLinkClick}
+                    // <<< POPRAWKA: Dodajemy klasę obok potencjalnych innych
+                    className="cursor-target"
+                  >
                     {item.name}
                   </NavLink>
                 )}
