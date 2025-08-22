@@ -1,14 +1,13 @@
 {
   "files": {
-    "main.css": "/WWW-Pjoter/static/css/main.e7bf19b4.css",
-    "main.js": "/WWW-Pjoter/static/js/main.1733b228.js",
+    "main.css": "/WWW-Pjoter/static/css/main.f9e9a5b5.css",
+    "main.js": "/WWW-Pjoter/static/js/main.2155c7b9.js",
     "index.html": "/WWW-Pjoter/index.html",
-    "static/media/splat.svg": "/WWW-Pjoter/static/media/splat.d7cf7214d97ffbb4da92.svg",
-    "main.e7bf19b4.css.map": "/WWW-Pjoter/static/css/main.e7bf19b4.css.map",
-    "main.1733b228.js.map": "/WWW-Pjoter/static/js/main.1733b228.js.map"
+    "main.f9e9a5b5.css.map": "/WWW-Pjoter/static/css/main.f9e9a5b5.css.map",
+    "main.2155c7b9.js.map": "/WWW-Pjoter/static/js/main.2155c7b9.js.map"
   },
   "entrypoints": [
-    "static/css/main.e7bf19b4.css",
-    "static/js/main.1733b228.js"
+    "static/css/main.f9e9a5b5.css",
+    "static/js/main.2155c7b9.js"
   ]
 }
