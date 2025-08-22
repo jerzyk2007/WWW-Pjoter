@@ -148,12 +148,6 @@
   min-width: 200px;
 }
 
-/* .nav-item:hover .submenu {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
-  pointer-events: auto;
-} */
-
 .submenu.desktop-open {
   opacity: 1;
   transform: translateX(-50%) translateY(0);
@@ -207,16 +201,17 @@
   }
 
   .nav-links {
-    justify-content: center;
     position: fixed;
     left: 0;
     top: 0;
     height: 100vh;
     width: 100%;
+    padding-top: 5vh;
     background-color: rgba(26, 26, 26, 0.98);
     backdrop-filter: blur(5px);
     flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
     gap: 2rem;
     transform: translateY(-100%);
     transition: transform 0.4s ease-in-out;
@@ -231,6 +226,12 @@
     text-align: center;
   }
 
+  .nav-item:hover::before,
+  .submenu li:hover::before {
+    opacity: 1;
+    transform: translate(0, 0) scale(0);
+  }
+
   .nav-item a,
   .submenu-toggle,
   .submenu li a {
@@ -242,14 +243,13 @@
     justify-content: initial;
   }
 
-  /* ZMIANA 4: Uproszczenie reguł kolorów na mobile */
   .nav-links.open a,
   .nav-links.open .submenu-toggle {
     color: var(--text-color) !important;
   }
 
   .nav-links.open .submenu li a {
-    color: rgb(57, 136, 175) !important; /* czerwony tylko dla submenu */
+    color: rgb(57, 136, 175) !important;
   }
 
   .nav-links.open .nav-item a:hover,
