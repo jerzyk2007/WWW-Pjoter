@@ -37,6 +37,7 @@ const menuItems = [
       { name: "Arena Leśna", path: "#" },
       { name: "Speedball", path: "#" },
       { name: "Forteca", path: "#" },
+      { name: "Morskie Oko", path: "#" },
     ],
   },
   { name: "Cennik", path: "#", splatColor: "#1e90ff" },
