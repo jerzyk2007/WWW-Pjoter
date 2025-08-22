@@ -70,7 +70,6 @@ const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openSubmenu, setOpenSubmenu] = useState(null); // Dla mobile
   const [hasInteracted, setHasInteracted] = useState(false);
-  // ZMIANA 1: Nowy, dedykowany stan do kontroli hover na desktopie
   const [desktopSubmenuOpen, setDesktopSubmenuOpen] = useState(null);
 
   const isDesktop = useMediaQuery("(min-width: 769px)");
@@ -85,20 +84,15 @@ const Nav = () => {
     }
     setIsMenuOpen(false);
     setOpenSubmenu(null);
-    // ZMIANA 2: Resetujemy stan submenu desktopowego po kliknięciu
     setDesktopSubmenuOpen(null);
   };
 
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        {/* <TargetCursor spinDuration={2} hideDefaultCursor={true} /> */}
         {isDesktop && (
           <TargetCursor spinDuration={2} hideDefaultCursor={true} />
         )}
-        {/* <NavLink to="/" className="brand-title" onClick={handleLinkClick}>
-          PAINTBALL
-        </NavLink> */}
 
         <NavLink
           to="/"
@@ -160,7 +154,6 @@ const Nav = () => {
                           <NavLink
                             to={subItem.path}
                             onClick={handleLinkClick}
-                            // <<< POPRAWKA: Dodajemy klasę obok potencjalnych innych
                             className="cursor-target"
                           >
                             {subItem.name}
@@ -173,7 +166,6 @@ const Nav = () => {
                   <NavLink
                     to={item.path}
                     onClick={handleLinkClick}
-                    // <<< POPRAWKA: Dodajemy klasę obok potencjalnych innych
                     className="cursor-target"
                   >
                     {item.name}
