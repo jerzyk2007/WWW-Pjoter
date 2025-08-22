@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/WWW-Pjoter/static/css/main.4130bc87.css",
+    "main.css": "/WWW-Pjoter/static/css/main.b5680ac9.css",
     "main.js": "/WWW-Pjoter/static/js/main.115d126f.js",
     "index.html": "/WWW-Pjoter/index.html",
-    "main.4130bc87.css.map": "/WWW-Pjoter/static/css/main.4130bc87.css.map",
+    "main.b5680ac9.css.map": "/WWW-Pjoter/static/css/main.b5680ac9.css.map",
     "main.115d126f.js.map": "/WWW-Pjoter/static/js/main.115d126f.js.map"
   },
   "entrypoints": [
-    "static/css/main.4130bc87.css",
+    "static/css/main.b5680ac9.css",
     "static/js/main.115d126f.js"
   ]
 }
