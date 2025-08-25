@@ -27,7 +27,14 @@ const menuItems = [
       { name: "Organizacja Imprez", path: "#" },
     ],
   },
-  { name: "Kontakt", path: "#", splatColor: "#9400d3" },
+  {
+    name: "Kontakt",
+    splatColor: "#9400d3",
+    submenu: [
+      { name: "Nasza ekipa", path: "#" },
+      { name: "Namiary", path: "#" },
+    ],
+  },
 ];
 
 const getContrastColor = (hexColor) => {
