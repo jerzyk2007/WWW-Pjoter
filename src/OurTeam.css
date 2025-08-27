@@ -19,3 +19,9 @@
   display: flex;
   justify-content: space-evenly;
 }
+
+@media (max-width: 768px) {
+  .our_team__container {
+    width: 90%;
+  }
+}

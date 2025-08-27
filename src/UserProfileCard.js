@@ -1,13 +1,12 @@
 import "./UserProfileCard.css";
 
 const UserProfileCard = ({ user }) => {
-  console.log(user.avatar);
   return (
     <div className="card">
       <div className="card-header">
         <img
-          // src={user.avatar}
-          src="/profile_cards/avatars/Sniper.png"
+          src={user.avatar}
+          // src="/avatars/Sniper.png"
           alt={`${user.nickname} avatar`}
           className="avatar"
         />

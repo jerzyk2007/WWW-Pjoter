@@ -1,48 +1,38 @@
 import UserProfileCard from "./UserProfileCard";
 import "./OurTeam.css";
-import sniperAvatar from "./assets/avatars/Sniper.png";
-
-function importAll(r) {
-  let images = {};
-  r.keys().forEach((key) => {
-    images[key.replace("./", "")] = r(key);
-  });
-  return images;
-}
-
-const avatars = importAll(require.context("./assets/avatars", false, /\.png$/));
 
 const users = [
   {
     id: 1,
     nickname: "Sniper",
     age: 28,
-    avatar: avatars["Sniper.png"],
+    avatar: process.env.PUBLIC_URL + "/images/profile_cards/avatars/Sniper.jpg",
   },
-  // {
-  //   id: 2,
-  //   nickname: "Mad Dog",
-  //   age: 24,
-  //   avatar: "https://via.placeholder.com/150", // Zastąp prawdziwym adresem URL obrazu
-  // },
-  // {
-  //   id: 3,
-  //   nickname: "Ghost",
-  //   age: 31,
-  //   avatar: "https://via.placeholder.com/150", // Zastąp prawdziwym adresem URL obrazu
-  // },
-  // {
-  //   id: 4,
-  //   nickname: "Iceman",
-  //   age: 70,
-  //   avatar: "https://via.placeholder.com/150", // Zastąp prawdziwym adresem URL obrazu
-  // },
-  // {
-  //   id: 5,
-  //   nickname: "Pjoter",
-  //   age: 11,
-  //   avatar: "https://via.placeholder.com/150", // Zastąp prawdziwym adresem URL obrazu
-  // },
+  {
+    id: 2,
+    nickname: "Mad Dog",
+    age: 17,
+    avatar:
+      process.env.PUBLIC_URL + "/images/profile_cards/avatars/Mad Dog.jpg",
+  },
+  {
+    id: 3,
+    nickname: "Ghost",
+    age: 31,
+    avatar: process.env.PUBLIC_URL + "/images/profile_cards/avatars/Ghost.png",
+  },
+  {
+    id: 4,
+    nickname: "Iceman",
+    age: 70,
+    avatar: process.env.PUBLIC_URL + "/images/profile_cards/avatars/Iceman.png",
+  },
+  {
+    id: 5,
+    nickname: "Pjoter",
+    age: 11,
+    avatar: process.env.PUBLIC_URL + "/images/profile_cards/avatars/Pjoter.png",
+  },
 ];
 
 const OurTeam = () => {
@@ -59,3 +49,15 @@ const OurTeam = () => {
 };
 
 export default OurTeam;
+
+// import sniperAvatar from "./assets/avatars/Sniper.png";
+
+// function importAll(r) {
+//   let images = {};
+//   r.keys().forEach((key) => {
+//     images[key.replace("./", "")] = r(key);
+//   });
+//   return images;
+// }
+
+// const avatars = importAll(require.context("./assets/avatars", false, /\.png$/));
