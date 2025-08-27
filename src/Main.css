@@ -1,7 +1,12 @@
 .main {
+  color: aliceblue;
   flex-grow: 1;
-  /* width: 100vw; */
-  /* height: 100vh; */
-  background-color: black;
-  display: flex;
+  flex-basis: 100%;
+  background-image: url("../public/images/main_page.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
 }

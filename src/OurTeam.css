@@ -1,0 +1,21 @@
+.our_team {
+  font-family: "Black Ops One", cursive;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.our_team__title {
+  letter-spacing: 1px;
+  text-align: center;
+  color: aliceblue;
+}
+
+.our_team__container {
+  width: 70%;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: space-evenly;
+}

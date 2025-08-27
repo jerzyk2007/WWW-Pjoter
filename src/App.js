@@ -1,16 +1,28 @@
 // import NavMenu from "./NavMenu";
-import Main from "./Main";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import Main from "./Main.js";
 import Nav from "./Nav";
-import "./App.css";
+import OurTeam from "./OurTeam.js";
 
 function App() {
   return (
     <div className="app">
-      <header className="header">
-        {/* <NavMenu /> */}
+      <Router>
+        {/* <header className="header"> */}
         <Nav />
-      </header>
-      <Main />
+        {/* </header> */}
+        <Routes>
+          <Route path="/" element={<Main />} />
+        </Routes>
+        <Routes>
+          <Route path="/team" element={<OurTeam />} />
+        </Routes>
+      </Router>
     </div>
   );
 }

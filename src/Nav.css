@@ -14,7 +14,7 @@
   padding: 0.1rem 2rem;
   position: sticky;
   top: 0;
-  width: 100%;
+  /* width: 100%; */
   z-index: 1000;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
   border-bottom: 2px solid var(--border-color);
@@ -24,7 +24,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* max-width: 1200px; */
   margin: 0 50px;
   gap: 2rem;
 }
@@ -64,6 +63,7 @@
 .submenu-toggle,
 .submenu li a {
   font-family: "Roboto", sans-serif;
+  letter-spacing: 1px;
   font-weight: 700;
   font-size: 1rem;
   text-decoration: none;
@@ -77,37 +77,11 @@
   text-align: center;
 }
 
-/* .nav-item::before,
-.submenu li::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 80px;
-  height: 80px;
-  background-color: var(--splat-color);
-  mask-image: url("./assets/splat.svg");
-  mask-size: contain;
-  mask-repeat: no-repeat;
-  mask-position: center;
-  opacity: 0;
-  transform: translate(-50%, -50%) scale(0.5);
-  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-    opacity 0.3s ease;
-  z-index: 1;
-} */
-
 .nav-item:hover > a,
 .nav-item:hover > .submenu-toggle,
 .submenu li:hover a {
   color: var(--hover-text);
 }
-
-/* .nav-item:hover::before,
-.submenu li:hover::before {
-  opacity: 1;
-  transform: translate(-50%, -50%) scale(1.1);
-} */
 
 .submenu-toggle {
   background: none;
@@ -153,12 +127,10 @@
   opacity: 1;
   transform: translateX(-50%) translateY(0);
   pointer-events: auto;
-
   width: 50%;
 }
 
 .submenu li a {
-  /* flex-grow: 1; */
   padding: 0.75rem 1.5rem;
   margin: 0 20px;
   display: flex;
@@ -293,7 +265,6 @@
   }
 
   .submenu.open {
-    /* display: block; */
     display: flex;
     flex-direction: column;
     justify-content: center;

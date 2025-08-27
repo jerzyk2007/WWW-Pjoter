@@ -40,7 +40,7 @@
 }
 
 .corner-tr {
-  /* transform: translate(50%, -150%); */
+  transform: translate(50%, -150%);
   border-left: none;
   border-bottom: none;
 }

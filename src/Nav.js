@@ -5,7 +5,7 @@ import useMediaQuery from "./hooks/useMediaQuery";
 import "./Nav.css";
 
 const menuItems = [
-  { name: "Strona Główna", path: "#", splatColor: "#ff6347" },
+  { name: "Strona Główna", path: "/", splatColor: "#ff6347" },
   {
     name: "Nasze Pola",
     splatColor: "#32cd32",
@@ -31,7 +31,7 @@ const menuItems = [
     name: "Kontakt",
     splatColor: "#9400d3",
     submenu: [
-      { name: "Nasza ekipa", path: "#" },
+      { name: "Nasza ekipa", path: "/team" },
       { name: "Namiary", path: "#" },
     ],
   },
@@ -50,9 +50,7 @@ const getContrastColor = (hexColor) => {
 const Nav = () => {
   const isDesktop = useMediaQuery("(min-width: 769px)");
 
-  // <<< KROK 1: Dodajemy nowy stan do śledzenia myszy
   const [isMouseOverNav, setIsMouseOverNav] = useState(false);
-
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openSubmenu, setOpenSubmenu] = useState(null);
   const [hasInteracted, setHasInteracted] = useState(false);
@@ -79,7 +77,7 @@ const Nav = () => {
     >
       <div className="navbar-container">
         {isDesktop && isMouseOverNav && (
-          <TargetCursor spinDuration={2} hideDefaultCursor={true} />
+          <TargetCursor spinDuration={1.5} hideDefaultCursor={true} />
         )}
 
         <NavLink
