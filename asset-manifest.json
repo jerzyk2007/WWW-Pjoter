@@ -1,14 +1,19 @@
 {
   "files": {
     "main.css": "/WWW-Pjoter/static/css/main.ff5c084f.css",
-    "main.js": "/WWW-Pjoter/static/js/main.91d8612e.js",
+    "main.js": "/WWW-Pjoter/static/js/main.b47e3b77.js",
+    "static/media/Pjoter.png": "/WWW-Pjoter/static/media/Pjoter.aba80bd8e2e8d4a9eba1.png",
+    "static/media/Mad Dog.png": "/WWW-Pjoter/static/media/Mad Dog.264cb04500d77b057f6e.png",
+    "static/media/Ghost.png": "/WWW-Pjoter/static/media/Ghost.3aefb0d260c2263a15cf.png",
+    "static/media/Iceman.png": "/WWW-Pjoter/static/media/Iceman.1e9a8d40502f097c244b.png",
+    "static/media/Sniper.png": "/WWW-Pjoter/static/media/Sniper.c6e35510882994c64f47.png",
     "static/media/main_page.jpg": "/WWW-Pjoter/static/media/main_page.4a658a8a2097a364973b.jpg",
     "index.html": "/WWW-Pjoter/index.html",
     "main.ff5c084f.css.map": "/WWW-Pjoter/static/css/main.ff5c084f.css.map",
-    "main.91d8612e.js.map": "/WWW-Pjoter/static/js/main.91d8612e.js.map"
+    "main.b47e3b77.js.map": "/WWW-Pjoter/static/js/main.b47e3b77.js.map"
   },
   "entrypoints": [
     "static/css/main.ff5c084f.css",
-    "static/js/main.91d8612e.js"
+    "static/js/main.b47e3b77.js"
   ]
 }
