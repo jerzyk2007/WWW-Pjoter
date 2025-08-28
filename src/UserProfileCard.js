@@ -1,3 +1,4 @@
+import avatars from "./utils/avatarLoader";
 import "./UserProfileCard.css";
 
 const UserProfileCard = ({ user }) => {
@@ -5,8 +6,7 @@ const UserProfileCard = ({ user }) => {
     <div className="card">
       <div className="card-header">
         <img
-          src={user.avatar}
-          // src="/avatars/Sniper.png"
+          src={avatars[user.nickname]}
           alt={`${user.nickname} avatar`}
           className="avatar"
         />
@@ -21,3 +21,4 @@ const UserProfileCard = ({ user }) => {
 };
 
 export default UserProfileCard;
+// src={user.avatar}

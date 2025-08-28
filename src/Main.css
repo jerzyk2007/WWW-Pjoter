@@ -2,7 +2,7 @@
   color: aliceblue;
   flex-grow: 1;
   flex-basis: 100%;
-  background-image: url("../public/images/main_page.jpg");
+  background-image: url("./assets/main_page.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

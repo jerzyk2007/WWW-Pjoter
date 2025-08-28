@@ -6,7 +6,7 @@ const users = [
     id: 1,
     nickname: "Sniper",
     age: 28,
-    avatar: process.env.PUBLIC_URL + "/images/profile_cards/avatars/Sniper.jpg",
+    avatar: "./assets/avatars/Sniper.jpg",
   },
   {
     id: 2,
